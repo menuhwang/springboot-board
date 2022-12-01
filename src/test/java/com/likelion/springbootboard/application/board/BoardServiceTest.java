@@ -3,14 +3,17 @@ package com.likelion.springbootboard.application.board;
 import com.likelion.springbootboard.domain.board.Board;
 import com.likelion.springbootboard.domain.board.BoardRepository;
 import com.likelion.springbootboard.dto.board.BoardRequest;
+import com.likelion.springbootboard.exception.notfound.BoardNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -51,5 +54,15 @@ class BoardServiceTest {
         // then
         assertEquals(BOARD_ID, savedBoardId);
         verify(boardRepository).save(any(Board.class));
+    }
+
+    @Test
+    void 게시물_아이디로_검색_결과가_없는_경우_BoardNotFoundException() {
+        Long id = 1L;
+
+        given(boardRepository.findById(id)).willReturn(Optional.empty());
+
+        assertThrows(BoardNotFoundException.class, () -> boardService.findById(id));
+        verify(boardRepository).findById(1L);
     }
 }
