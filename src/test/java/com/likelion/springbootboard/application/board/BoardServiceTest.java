@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static com.likelion.springbootboard.support.fixture.BoardFixture.BOARD_1;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -33,18 +34,9 @@ class BoardServiceTest {
         final String CONTENT = "본문입니다.";
         final Long BOARD_ID = 1L;
         // given
-        BoardRequest boardRequest = BoardRequest.builder()
-                                                .author(AUTHOR)
-                                                .title(TITLE)
-                                                .content(CONTENT)
-                                                .build();
+        BoardRequest boardRequest = BOARD_1.request();
 
-        Board board = Board.builder()
-                            .id(BOARD_ID)
-                            .author(AUTHOR)
-                            .title(TITLE)
-                            .content(CONTENT)
-                            .build();
+        Board board = BOARD_1.entity();
 
         given(boardRepository.save(any(Board.class))).willReturn(board);
 
