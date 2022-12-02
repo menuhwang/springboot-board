@@ -29,4 +29,8 @@ public class BoardService {
         board.update(boardRequest.toEntity());
         return BoardResponse.of(board);
     }
+
+    public void deleteById(Long id) {
+        boardRepository.deleteById(id);
+    }
 }

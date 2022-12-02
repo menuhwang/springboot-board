@@ -4,6 +4,7 @@ import com.likelion.springbootboard.application.board.BoardService;
 import com.likelion.springbootboard.dto.board.BoardRequest;
 import com.likelion.springbootboard.dto.board.BoardResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -25,5 +26,11 @@ public class BoardController {
     @PatchMapping("/{id}")
     public BoardResponse editBoard(@PathVariable("id") Long id, @RequestBody BoardRequest boardRequest) {
         return boardService.editBoard(id, boardRequest);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable("id") Long id) {
+        boardService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
