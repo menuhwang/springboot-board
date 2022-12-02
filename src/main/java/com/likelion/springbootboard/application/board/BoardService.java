@@ -7,6 +7,7 @@ import com.likelion.springbootboard.dto.board.BoardResponse;
 import com.likelion.springbootboard.exception.notfound.BoardNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +20,13 @@ public class BoardService {
 
     public BoardResponse findById(Long id) {
         Board board = boardRepository.findById(id).orElseThrow(BoardNotFoundException::new);
+        return BoardResponse.of(board);
+    }
+
+    @Transactional
+    public BoardResponse editBoard(Long id, BoardRequest boardRequest) {
+        Board board = boardRepository.findById(id).orElseThrow(BoardNotFoundException::new);
+        board.update(boardRequest.toEntity());
         return BoardResponse.of(board);
     }
 }

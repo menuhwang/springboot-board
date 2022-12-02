@@ -21,4 +21,9 @@ public class BoardController {
     public BoardResponse findById(@PathVariable Long id) {
         return boardService.findById(id);
     }
+
+    @PatchMapping("/{id}")
+    public BoardResponse editBoard(@PathVariable("id") Long id, @RequestBody BoardRequest boardRequest) {
+        return boardService.editBoard(id, boardRequest);
+    }
 }

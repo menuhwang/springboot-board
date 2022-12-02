@@ -22,4 +22,27 @@ public class Board {
     private String title;
     private String author;
     private String content;
+
+    public void update(Board board) {
+        updateTitle(board.getTitle());
+        updateAuthor(board.getAuthor());
+        updateContent(board.getContent());
+    }
+    private void updateTitle(String title) {
+        if (title != null) {
+            this.title = title;
+        }
+    }
+
+    private void updateAuthor(String author) {
+        if (author != null) {
+            this.author = author;
+        }
+    }
+
+    private void updateContent(String content) {
+        if (content != null) {
+            this.content = content;
+        }
+    }
 }
