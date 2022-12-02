@@ -55,6 +55,17 @@ class BoardServiceTest {
         given(boardRepository.findById(id)).willReturn(Optional.empty());
 
         assertThrows(BoardNotFoundException.class, () -> boardService.findById(id));
-        verify(boardRepository).findById(1L);
+        verify(boardRepository).findById(id);
+    }
+
+    @Test
+    void 게시물_수정_게시물이_없는_경우_BoardNotFoundException() {
+        Long id = 1L;
+        BoardRequest boardRequest = BOARD_1.request();
+
+        given(boardRepository.findById(id)).willReturn(Optional.empty());
+
+        assertThrows(BoardNotFoundException.class, () -> boardService.editBoard(id, boardRequest));
+        verify(boardRepository).findById(id);
     }
 }
