@@ -46,3 +46,13 @@ ex) member/minwoo
 ### 게시글 삭제
 
 `DELETE /api/v1/boards/{id}`
+
+# Step 2 : 댓글 기능
+
+댓글 Entity를 설계하고 CRUD를 구현.
+
+## 요구사항
+
++ 댓글에 작성자와 댓글을 작성할 수 있도록 해주세요.
++ 댓글과 게시글 사이에 연관관계를 설정해주세요.
++ Restful하게 Endpoint를 설계해주세요.
