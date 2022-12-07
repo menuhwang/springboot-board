@@ -1,4 +1,4 @@
-package com.likelion.springbootboard.application.board;
+package com.likelion.springbootboard.application.reply;
 
 import com.likelion.springbootboard.domain.board.Board;
 import com.likelion.springbootboard.domain.board.BoardRepository;

@@ -1,6 +1,6 @@
 package com.likelion.springbootboard.presentation.reply;
 
-import com.likelion.springbootboard.application.board.ReplyService;
+import com.likelion.springbootboard.application.reply.ReplyService;
 import com.likelion.springbootboard.dto.reply.ReplyRequest;
 import com.likelion.springbootboard.dto.reply.ReplyResponse;
 import lombok.RequiredArgsConstructor;
